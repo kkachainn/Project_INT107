@@ -1,0 +1,176 @@
+/**************Table structure for table account *******************/
+DROP TABLE account;
+
+CREATE TABLE account (
+  accountId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+  username varchar(50) NOT NULL,
+  password varchar(40) NOT NULL,
+  firstName varchar(50) NOT NULL,
+  lastName varchar(30) NOT NULL,
+  nickname varchar(30) NOT NULL,
+  sex char(1) check (sex in ('F','M')) NOT NULL,
+  dob date,
+  phone varchar(50) NOT NULL,
+  address varchar(250) DEFAULT NULL,
+  province varchar(50) DEFAULT NULL,
+  postalCode varchar(5) DEFAULT NULL,
+  country varchar(50) DEFAULT NULL,
+  activatekey varchar(40) NOT NULL,
+  activatedate timestamp,
+
+  CONSTRAINT account_accId_pk PRIMARY KEY (accountid),
+  CONSTRAINT account_username_uk unique (username)
+) ;
+
+/*Data for table account */
+insert into account(username,password,firstName,lastName,nickname,sex,phone,activatekey) values 
+('test@test.com','test','FirstName','LastName','Admin','M','0123456789','activatekey');
+
+
+/*********************Table structure for table shoe *********************/
+DROP TABLE  shoe;
+
+CREATE TABLE shoe (
+  shoeId varchar(10) NOT NULL,
+  shoeName varchar(70) NOT NULL,
+  color varchar(15) NOT NULL,
+  shoeType varchar(20) NOT NULL,
+  shoeType2 varchar(10) check (shoeType2 in ('MEN','WOMEN','ALL')) NOT NULL,
+  brand varchar(20) NOT NULL,
+  price int NOT NULL,
+
+  CONSTRAINT shoe_shoeId_pk PRIMARY KEY (shoeId)
+) ;
+
+/*Data for the table shoe */
+insert  into shoe(shoeId,shoeName,color,shoeType,shoeType2,brand,price) values
+('NI001SH200','Nike01','black','running','MEN','nike',1000),
+('NI002SH200','Nike02','white','sport','WOMEN','nike',2000),
+('NI003SH200','Nike03','black','training','ALL','nike',3000),
+('NI004SH200','Nike04','white','running','ALL','nike',4000),
+
+
+('FL007SH200','Fila_Riley','navy/pink','running','WOMEN','fila',1990),
+('FL038SH200','Fila_Tadeo','gray','sport','MEN','fila',1990),
+('FL039SH200','Fila_Tyler','gray','sport','MEN','fila',1590),
+('FL040SH200','Fila_SP-Tex_Space','Turquoise','sport','WOMEN','fila',1590),
+('FL041SH200','Fila_SP-Tex_Space ','orange','sport','WOMEN','fila',1590),
+('FL042SH200','Fila_Disruptor','white/navy','lifestyle','WOMEN','fila',1990),
+('FL043SH200','Fila_Robin','white/blue','sport','WOMEN','fila',1790),
+('FL044SH200','Fila_SP-Tex_Space','navy','sport','MEN','fila',1590),
+('FL045SH200','Fila_Ryan','peach','running','WOMEN','fila',1790),
+('FL046SH200','Fila_Rae','orange','sport','WOMEN','fila',1990),
+('FL047SH200','Fila_Trick','black','lifestyle','MEN','fila',590),
+('FL048SH200','Fila_Toryn','dark gray/black','running','MEN','fila',1590),
+('FL049SH200','Fila_Toryn','grey/turquoise','running','WOMEN','fila',1590),
+('FL050SH200','Fila_Crackinz','pink','lifestyle','WOMEN','fila',590),
+('FL051SH200','Fila_ Funy_II','black','lifestyle','WOMEN','fila',590),
+('FL052SH200','Fila_Crackinz','black','lifestyle','WOMEN','fila',590),
+('FL053SH200','Fila_Memory_Armitages','monument/white ','running','WOMEN','fila',1990),
+('FL054SH200','Fila_Tyler','black','sport','MEN','fila',1590),
+
+
+('NE008SH200','NewBalance01','white','running','ALL','new balance',8000),
+
+('SK009SH200','skechers01','black','running','WOMEN','skechers',9000),
+('SK010SH200','skechers02','white','running','MEN','skechers',9990);
+
+('AD005SH200','Adidas_SKECHERS_D'Lites_3.0','black/tan ','lifestyle','WOMEN','adidas',3495),
+('AD006SH200','Adidas_SKECHERS_Gorun_Mojo-Inspirate','black/white','running','WOMEN','adidas',2790),
+('AD011SH200','Adidas_Ultraboost_LTD','black/white/gold','running','MEN','adidas',8000),
+('AD012SH200','Adidas_Pureboost_Go','red','running','WOMEN','adidas',4500),
+('AD013SH200','Adidas_Pureboost_Go','maroon','running','MEN','adidas',4500),
+('AD014SH200','Adidas_Ultraboost_LTD','black','running','MEN','adidas',8000),
+('AD015SH200','Adidas_Pureboost X','pearl','running','WOMEN','adidas',5000),
+('AD016SH200','Adidas_Ultraboost','trace maroon/base green','running','WOMEN','adidas',6500),
+('AD017SH200','Adidas_Ultraboost','black','running','MEN','adidas',6500),
+('AD018SH200','Adidas_Ultraboost_LTD','black/white/bronze','running','MEN','adidas',8000),
+('AD019SH200','Adidas_Alphabounce_EM','gray','running','MEN','adidas',4000),
+('AD020SH200','Adidas_Pureboost_Go','green','running','MEN','adidas',4500),
+('AD021SH200','Adidas_Ultraboost_LTD','black/white/silver','running','MEN','adidas',8000),
+('AD022SH200','Adidas_Cosmic_2','green','running','MEN','adidas',2600),
+('AD023SH200','Adidas_Alphabounce_RC_2','black','running','MEN','adidas',3300),
+('AD024SH200','Adidas_Pureboost_DPR','black','running','MEN','adidas',5300),
+('AD025SH200','Adidas_Element_Race','blue','running','WOMEN','adidas',2300),
+('AD026SH200','Adidas_Duramo_Lite_2.0','black','running','WOMEN','adidas',2000),
+('AD027SH200','Adidas_Edgebounce','black','running','WOMEN','adidas',3800),
+('AD028SH200','Adidas_Duramo_Lite_2.0','gray','running','WOMEN','adidas',2000),
+('AD029SH200','Adidas_Edge_Lux_Clima','black','running','WOMEN','adidas',3400),
+('AD030SH200','Adidas_Alphabounce_RC','black','running','MEN','adidas',3300),
+('AD031SH200','Adidas_Nemeziz_18.3_FG','blue','sport','-','adidas',3300),
+('AD032SH200','Adidas_Nemeziz_Messi_18.1_FG','blue','sport','-','adidas',8500),
+('AD033SH200','Adidas_Adilette_Cloudfoam_Plus_Mono_Slides','gray','lifestyle','-','adidas',1300),
+('AD034SH200','Adidas_Adilette_Comfort','blue','lifestyle','-','adidas',1300),
+('AD035SH200','Adidas_Adilette_Comfort','black','lifestyle','-','adidas',1300),
+('AD036SH200','Adidas_Barricade_Club','red','sport','MEN','adidas',3300),
+('AD037SH200','Adidas_ Ultraboost_X ','gray','running','WOMEN','adidas',7300),
+
+/********************Table structure for table sizeSpecific ********************/
+DROP TABLE sizeSpecific;
+
+CREATE table sizeSpecific(
+  shoeId varchar(10) NOT NULL,
+  shoeSize int NOT NULL,
+  CONSTRAINT sizeSpecific_sIdSize_pk PRIMARY KEY (shoeId,shoeSize),
+  CONSTRAINT sizeSpecific_shoeId_fk FOREIGN KEY (shoeId) REFERENCES shoe(shoeId)
+);
+
+/*Data for the table sizeSpecific */
+insert into sizeSpecific(shoeId,shoeSize) values
+('NI001SH200',7),
+('NI001SH200',9),
+('NI001SH200',10);
+
+/*******************Table structure for table orders *****************/
+DROP TABLE orders;
+
+CREATE TABLE orders (
+  orderId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 6013001, INCREMENT BY 1),
+  orderDate date NOT NULL,
+  shipTo varchar(250) NOT NULL,
+  shippedDate date NOT NULL,
+  totalPrice decimal(10,2) NOT NULL,
+  accountId int NOT NULL,
+  CONSTRAINT order_orderId_pk PRIMARY KEY (orderId),
+  CONSTRAINT order_accountId_fk FOREIGN KEY (accountId) REFERENCES account (accountId)
+) ;
+
+/*Data for the table orders */
+insert into orders(orderDate,shipTo,shippedDate, totalPrice,accountId) values
+('2018-11-01','BangkokTH','2018-11-08',1000,1);
+
+
+/*********************Table structure for table orderDetail *********************/
+DROP TABLE orderDetail;
+
+CREATE TABLE orderDetail (
+  orderId int NOT NULL,
+  shoeId varchar(10) NOT NULL,
+  shoeSize int NOT NULL,
+  quantity int NOT NULL,
+  price decimal(10,2) NOT NULL,
+  CONSTRAINT orderdetail_orderId_pk PRIMARY KEY (orderId,shoeId,shoeSize),
+  CONSTRAINT orderdetail_orderId_fk1 FOREIGN KEY (orderId) REFERENCES orders (orderId),
+  CONSTRAINT orderdetail_shoeId_fk2 FOREIGN KEY (shoeId) REFERENCES shoe (shoeId)
+) ;
+
+/*Data for the table orderDetail */
+insert  into orderDetail (orderId,shoeId,shoeSize,quantity,price) values
+(6013001,'NI001SH200',9,1,3000);
+
+/*********************Table structure for table voucher *********************/
+DROP TABLE voucher;
+
+CREATE TABLE voucher (
+  voucherId varchar(10) NOT NULL,
+  voucherValue int NOT NULL,
+  minSpend int DEFAULT 0,
+  validate varchar(5) check (validate in ('true','false')) DEFAULT 'true',
+  comment varchar(40) DEFAULT NULL,
+
+  CONSTRAINT voucher_vId_pk PRIMARY KEY (voucherId)
+);
+
+insert  into voucher(voucherId,voucherValue,minSpend) values
+('NEW100',100,1500);
+/*end of statements */
